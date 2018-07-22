@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/tarmim/.android/build-cache/ef4151a5367fc77192fe5496637f52ebe474290c/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="e7a850c25a7efbd533c496ab482c980fdafac58d">
+        <dex dex="/Users/tarmim/RN/apiLogin/android/app/build/intermediates/pre-dexed/debug/classes_803754c025a168c05abc79f429253825f7d7c768.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/tarmim/.android/build-cache/ef4151a5367fc77192fe5496637f52ebe474290c/output/jars/libs/infer-annotations-4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="9809e90be788acdb479b2b44e2112f3295a03068">
+        <dex dex="/Users/tarmim/RN/apiLogin/android/app/build/intermediates/pre-dexed/debug/infer-annotations-4.0_b3dc22df20f25d5a175d3892d614b5a1504bd40f.jar" />
+    </item>
+
+</items>

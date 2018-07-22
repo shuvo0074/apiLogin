@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/tarmim/RN/apiLogin/android/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_dark.xml",
+        "source": "/Users/tarmim/.android/build-cache/8c3ce3c1a93b34cfd1b9e10599aa5e2a04ebed31/output/res/color-v11/abc_background_cache_hint_selector_material_dark.xml"
+    },
+    {
+        "merged": "/Users/tarmim/RN/apiLogin/android/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_light.xml",
+        "source": "/Users/tarmim/.android/build-cache/8c3ce3c1a93b34cfd1b9e10599aa5e2a04ebed31/output/res/color-v11/abc_background_cache_hint_selector_material_light.xml"
+    }
+]
