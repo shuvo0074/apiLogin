@@ -11,6 +11,7 @@ import {
   NetInfo,
   ActivityIndicator,
 } from 'react-native';
+var SQLite = require('react-native-sqlite-storage')
 export default class HomeScreen extends Component<{}> {
     static navigationOptions = {
         title: 'Login',

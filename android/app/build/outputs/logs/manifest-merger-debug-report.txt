@@ -77,6 +77,7 @@ ADDED from /Users/tarmim/RN/apiLogin/android/app/src/main/AndroidManifest.xml:24
 		ADDED from /Users/tarmim/RN/apiLogin/android/app/src/main/AndroidManifest.xml:24:17-81
 uses-sdk
 INJECTED from /Users/tarmim/RN/apiLogin/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [apiLogin:react-native-sqlite-storage:unspecified] /Users/tarmim/RN/apiLogin/node_modules/react-native-sqlite-storage/src/android/build/intermediates/bundles/default/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.56.0] /Users/tarmim/.android/build-cache/ef4151a5367fc77192fe5496637f52ebe474290c/output/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/tarmim/.android/build-cache/8c3ce3c1a93b34cfd1b9e10599aa5e2a04ebed31/output/AndroidManifest.xml:21:5-23:78
 MERGED from [com.android.support:support-v4:26.1.0] /Users/tarmim/.android/build-cache/0b8701d506a116dd3b15c21072c1014423349ae0/output/AndroidManifest.xml:21:5-23:54

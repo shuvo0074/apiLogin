@@ -12,6 +12,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/tarmim/RN/apiLogin/node_modules/react-native-sqlite-storage/src/android/build/intermediates/bundles/default/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="d2f518deb0f00923f44923b826122a2b9a9d21a8">
+        <dex dex="/Users/tarmim/RN/apiLogin/android/app/build/intermediates/pre-dexed/debug/classes_e83d094bc1cae35a342ad5d5bdb73ed71e0b63f9.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/tarmim/.android/build-cache/ef4151a5367fc77192fe5496637f52ebe474290c/output/jars/libs/infer-annotations-4.0.jar"
         jumboMode="false"
         optimize="true"
