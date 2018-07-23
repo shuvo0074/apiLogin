@@ -24,7 +24,6 @@ export default class HomeScreen extends Component<{}> {
         connection: '',
         isLoading: false,
         dataSource: null,
-        loggedIn: false,
         url:'',
       })
       this.conStatus()
@@ -49,52 +48,6 @@ export default class HomeScreen extends Component<{}> {
           <ActivityIndicator />
         </View>
       );
-    }
-    if (this.state.loggedIn){
-      return(
-            <View
-            style={{flex:1,
-            alignItems:'center',
-          justifyContent:'center',
-          backgroundColor: '#1e3799',
-
-        }}
-            >
-            <View          
-            style={styles.profileContainer} >
-            <View
-            style={{
-              backgroundColor: 'white',
-              height: 246,
-              width:246,position: 'absolute',
-              borderWidth:2,
-              borderRadius: 10,
-              borderColor: '#b8e994',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}
-            >
-            <Text>
-            {this.state.dataSource[0].outMessage}
-          </Text>
-          <Text>
-            out Code {this.state.dataSource[0].outCode}
-          </Text>
-        </View>
-        </View>
-        <TouchableOpacity
-        onPress= {()=>{
-          this.setState({loggedIn: false})
-          console.log("Logged out")
-        }}
-        style={styles.button}
-        >
-        <Text>
-        Log out
-        </Text>
-        </TouchableOpacity>
-        </View>
-      )
     }
     else{
       return (
@@ -124,10 +77,15 @@ export default class HomeScreen extends Component<{}> {
            this.setState({
              isLoading: false,
              dataSource: responseJson.loginNodes,
-             loggedIn: true,
            }, function() {
-             console.log("url : -", url +"-")
-             console.log(" Data Source ",this.state.dataSource)
+            if(this.state.dataSource[0].outCode==='1')
+            {ToastAndroid.show(this.state.dataSource[0].outMessage+" Error code: "+this.state.dataSource[0].outCode, ToastAndroid.SHORT)}
+            else{
+            ToastAndroid.show(this.state.dataSource[0].outMessage, ToastAndroid.SHORT)
+            console.log("url : -", url +"-")
+            console.log(" Data Source ",this.state.dataSource[0])
+            console.log("outCode type"+typeof(this.state.dataSource[0].outCode))
+            navigate('Profile')}
            })
          })
          .catch((error) => {

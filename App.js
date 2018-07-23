@@ -9,9 +9,11 @@ import {
 } from 'react-native';
 import {StackNavigator} from 'react-navigation'
 import HomeScreen from './src/HomeScreen'
+import  ProfileScreen from "./src/ProfileScreen";
 
 const Nav=StackNavigator({
   Login: {screen: HomeScreen},
+  Profile: {screen: ProfileScreen}
 },{
   navigationOptions: {
     headerStyle: {
