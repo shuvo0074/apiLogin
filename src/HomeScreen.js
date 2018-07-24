@@ -26,7 +26,7 @@ export default class HomeScreen extends Component<{}> {
       this.state = ({
         uname: '',
         pass: '',
-        connection: '',
+        connection: null,
         isLoading: false,
         dataSource: null,
         url:'',
@@ -35,14 +35,17 @@ export default class HomeScreen extends Component<{}> {
     }
     conStatus=()=>{
       NetInfo.isConnected.fetch().then(isConnected => {
-        if(isConnected)  
-         {this.setState ({connection: 'online'})
-         //ToastAndroid.show('You are connected to the internet.', ToastAndroid.SHORT);
-        }
-         else {this.setState ({connection: 'offline'})
-         //ToastAndroid.show('You are not connected to the internet !', ToastAndroid.SHORT);
-        }
-      })
+        console.log("---",isConnected)
+        this.setState({connection: isConnected})
+      });
+       handleFirstConnectivityChange=(isConnected)=> {
+        console.log("***",isConnected)
+        this.setState({connection: isConnected})
+      }
+      NetInfo.isConnected.addEventListener(
+        'change',
+        handleFirstConnectivityChange
+      );
     }
 
     render() {
@@ -64,21 +67,23 @@ export default class HomeScreen extends Component<{}> {
         <TextInput
         placeholder= "    User Name"
         onChangeText={(txt)=>{
-          this.setState({uname: txt})
+          this.setState({uname: txt.toLowerCase()})
         }}
         style={styles.input}
         />
         <TextInput
         placeholder= "    Password"
         onChangeText={(txt)=>{
-          this.setState({pass: txt})
+          this.setState({pass: txt.toLowerCase()})
         }}
         secureTextEntry
         style={styles.input}
         />
         <TouchableOpacity
         onPress= {()=>{
-          if(this.state.uname===''&&this.state.pass==='')
+          if (this.state.connection)
+          {
+            if(this.state.uname===''&&this.state.pass==='')
             {ToastAndroid.show("Insert username and password", ToastAndroid.SHORT)}
             else
           {this.setState({isLoading: true})
@@ -98,7 +103,9 @@ export default class HomeScreen extends Component<{}> {
               console.log("url : -", url +"-")
               console.log(" Data Source ",this.state.dataSource[0])
               console.log("outCode type"+typeof(this.state.dataSource[0].outCode))
-              navigate('Profile')}
+              navigate('Profile')
+              this.setState({uname: '',
+              pass: '',})}
              })
            })
            .catch((error) => {
@@ -106,7 +113,11 @@ export default class HomeScreen extends Component<{}> {
            })
             
           },2000)}
-          
+          }
+          else
+          {
+            ToastAndroid.show("You are not connected to internet.", ToastAndroid.SHORT)
+          }  
         }}
         style={styles.button}
         >

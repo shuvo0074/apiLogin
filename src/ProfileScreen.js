@@ -9,7 +9,8 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 FlatList,
-Easing,Alert
+Easing,Alert,
+Dimensions,
 } from 'react-native';
 import Drawer from 'react-native-drawer-menu';
 import ActionBar from 'react-native-action-bar'
@@ -26,7 +27,15 @@ export default class ProfileScreen extends Component<{}> {
         dataSource: null,
         dbDataSource: null,
         drawer: false,
+        W: Dimensions.get('window').width,
+        H: Dimensions.get('window').height,
       })
+      Dimensions.addEventListener('change', () => {
+        this.setState({
+        W: Dimensions.get('window').width,
+        H: Dimensions.get('window').height,
+      })
+      })  
       this._sync()
     }
     _sync=()=>{
@@ -59,7 +68,7 @@ export default class ProfileScreen extends Component<{}> {
           console.log("Error in datasource ");
         });
         
-      },2000)
+      },1500)
     }
     _syncDb=()=>{
       console.log("Syncing contacts from database")
@@ -167,7 +176,7 @@ export default class ProfileScreen extends Component<{}> {
     >
         <View style={styles.container} >
         <ActionBar
-    containerStyle={{position: 'absolute',top: 0,left:0,width: '100%'}}
+    containerStyle={{position: 'absolute',top: 0,left:0,width: this.state.W}}
     title={'Your conatcts'}
     leftIconName={'menu'}
     onLeftPress={() => {
@@ -177,13 +186,22 @@ export default class ProfileScreen extends Component<{}> {
             
             <View
             
-            style={styles.profileContainer} >
+            style={{
+              backgroundColor: 'white',
+              width:this.state.W-60,
+              height:this.state.H-130,
+              borderWidth:2,
+              borderRadius: 10,
+              borderColor: '#60a3bc',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }} >
             <View
             style={{
               flex:1,
               backgroundColor: 'white',
               borderWidth:2,
-              width:295,
+              width:this.state.W-66,
               borderRadius: 10,
               borderColor: '#b8e994',
               alignItems: 'center',
