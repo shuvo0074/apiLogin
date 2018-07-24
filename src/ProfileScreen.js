@@ -9,7 +9,9 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 FlatList,
+Easing,Alert
 } from 'react-native';
+import Drawer from 'react-native-drawer-menu';
 import ActionBar from 'react-native-action-bar'
 var SQLite = require('react-native-sqlite-storage')
 var db = SQLite.openDatabase({name: 'contactsDB', createFromLocation : "~contacts.db", location: 'Library'});
@@ -105,23 +107,7 @@ export default class ProfileScreen extends Component<{}> {
   
   
     render() {
-  
-      if (this.state.isLoading) {
-        return (
-          <View style={{flex: 1, paddingTop: 20}}>
-            <ActivityIndicator />
-          </View>
-        );
-      }
-      const {navigate}=this.props.navigation
-      return (
-        <View style={styles.container} >
-        <ActionBar
-    containerStyle={{position: 'absolute',top: 0,left:0,width: '100%'}}
-    title={'Your conatcts'}
-    leftIconName={'menu'}
-    onLeftPress={() => this.setState({drawer: true})}
-    />
+      var drawerContent = (<View style={styles.container}>
             <TouchableOpacity
             onPress={()=>{
               this.setState({isLoading: true})
@@ -133,6 +119,62 @@ export default class ProfileScreen extends Component<{}> {
                 Sync
               </Text>
             </TouchableOpacity>
+            <TouchableOpacity
+            onPress= {()=>{
+              Alert.alert(
+                'Confirm',
+                'Are you sure?',
+                [
+                  {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                  {text: 'OK', onPress: () => navigate('Login')},
+                ],
+                { cancelable: false }
+              )
+            }}
+            style={styles.button}
+            >
+            <Text>
+            Logout
+            </Text>
+            </TouchableOpacity>
+      </View>)
+      var customStyles = {
+        drawer: {
+          shadowColor: '#000',
+          shadowOpacity: 0.4,
+          shadowRadius: 10
+        },
+      }
+      if (this.state.isLoading) {
+        return (
+          <View style={{flex: 1, paddingTop: 20}}>
+            <ActivityIndicator />
+          </View>
+        );
+      }
+      const {navigate}=this.props.navigation
+      return (
+        <Drawer
+        ref='myDrawer'
+      style={styles.container}
+      drawerWidth={250}
+      drawerContent={drawerContent}
+      disabled={this.state.drawer}
+      type={Drawer.types.Overlay}
+      customStyles={{drawer: styles.drawer}}
+      drawerPosition={Drawer.positions.Left}
+      easingFunc={Easing.ease}
+    >
+        <View style={styles.container} >
+        <ActionBar
+    containerStyle={{position: 'absolute',top: 0,left:0,width: '100%'}}
+    title={'Your conatcts'}
+    leftIconName={'menu'}
+    onLeftPress={() => {
+    this.refs.myDrawer.openDrawer()}
+  }
+    />
+            
             <View
             
             style={styles.profileContainer} >
@@ -185,17 +227,9 @@ export default class ProfileScreen extends Component<{}> {
       />
             </View>
             </View>
-            <TouchableOpacity
-            onPress= {()=>{
-              navigate('Login')
-            }}
-            style={styles.button}
-            >
-            <Text>
-            Logout
-            </Text>
-            </TouchableOpacity>
+            
         </View>
+      </Drawer>
       );
     }
   }
@@ -213,10 +247,10 @@ export default class ProfileScreen extends Component<{}> {
       borderColor: '#4a69bd',
       backgroundColor: '#079992',
       height: 40,
-      width: 60,
+      width: 120,
       alignItems: 'center',
       justifyContent: 'center',
-      margin: 10,
+      margin: 20,
   },
     welcome: {
       fontSize: 20,

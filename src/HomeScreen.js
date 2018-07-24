@@ -24,8 +24,8 @@ export default class HomeScreen extends Component<{}> {
     constructor (props){
       super(props)
       this.state = ({
-        uname: 'a',
-        pass: 'a',
+        uname: '',
+        pass: '',
         connection: '',
         isLoading: false,
         dataSource: null,
@@ -78,30 +78,34 @@ export default class HomeScreen extends Component<{}> {
         />
         <TouchableOpacity
         onPress= {()=>{
-          this.setState({isLoading: true})
+          if(this.state.uname===''&&this.state.pass==='')
+            {ToastAndroid.show("Insert username and password", ToastAndroid.SHORT)}
+            else
+          {this.setState({isLoading: true})
           setTimeout(()=>{
             let url='http://202.40.191.226:8084/DHSWEB/LoginS?userid='+this.state.uname+'&password='+this.state.pass+''
-          return fetch(url)
-         .then((response) => response.json())
-         .then((responseJson) => {
-           this.setState({
-             isLoading: false,
-             dataSource: responseJson.loginNodes,
-           }, function() {
-            if(this.state.dataSource[0].outCode==='1')
-            {ToastAndroid.show(this.state.dataSource[0].outMessage+" Error code: "+this.state.dataSource[0].outCode, ToastAndroid.SHORT)}
-            else{
-            ToastAndroid.show(this.state.dataSource[0].outMessage, ToastAndroid.SHORT)
-            console.log("url : -", url +"-")
-            console.log(" Data Source ",this.state.dataSource[0])
-            console.log("outCode type"+typeof(this.state.dataSource[0].outCode))
-            navigate('Profile')}
+            return fetch(url)
+           .then((response) => response.json())
+           .then((responseJson) => {
+             this.setState({
+               isLoading: false,
+               dataSource: responseJson.loginNodes,
+             }, function() {
+              if(this.state.dataSource[0].outCode==='1')
+              {ToastAndroid.show(this.state.dataSource[0].outMessage+" Error code: "+this.state.dataSource[0].outCode, ToastAndroid.SHORT)}
+              else{
+              ToastAndroid.show(this.state.dataSource[0].outMessage, ToastAndroid.SHORT)
+              console.log("url : -", url +"-")
+              console.log(" Data Source ",this.state.dataSource[0])
+              console.log("outCode type"+typeof(this.state.dataSource[0].outCode))
+              navigate('Profile')}
+             })
            })
-         })
-         .catch((error) => {
-           console.error("Error in datasource ",error);
-         })
-          },3000)
+           .catch((error) => {
+             console.error("Error in datasource ",error);
+           })
+            
+          },2000)}
           
         }}
         style={styles.button}

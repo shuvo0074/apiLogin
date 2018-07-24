@@ -10,6 +10,7 @@
     "react": "16.4.1",
     "react-native": "0.56.0",
     "react-native-action-bar": "^2.0.5",
+    "react-native-drawer-menu": "^0.2.5",
     "react-native-sqlite-storage": "^3.3.6",
     "react-navigation": "^2.8.0"
   },

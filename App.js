@@ -4,13 +4,13 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
+  Image,YellowBox,
   ToastAndroid,
 } from 'react-native';
 import {StackNavigator} from 'react-navigation'
 import HomeScreen from './src/HomeScreen'
 import  ProfileScreen from "./src/ProfileScreen";
-
+YellowBox.ignoreWarnings(['Warning: ...']);
 const Nav=StackNavigator({
   Login: {screen: HomeScreen},
   Profile: {screen: ProfileScreen}
