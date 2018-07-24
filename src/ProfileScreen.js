@@ -10,6 +10,7 @@ import {
   ActivityIndicator,
 FlatList,
 } from 'react-native';
+import ActionBar from 'react-native-action-bar'
 var SQLite = require('react-native-sqlite-storage')
 var db = SQLite.openDatabase({name: 'contactsDB', createFromLocation : "~contacts.db", location: 'Library'});
 export default class ProfileScreen extends Component<{}> {
@@ -22,6 +23,7 @@ export default class ProfileScreen extends Component<{}> {
         isLoading: false,
         dataSource: null,
         dbDataSource: null,
+        drawer: false,
       })
       this._sync()
     }
@@ -114,6 +116,12 @@ export default class ProfileScreen extends Component<{}> {
       const {navigate}=this.props.navigation
       return (
         <View style={styles.container} >
+        <ActionBar
+    containerStyle={{position: 'absolute',top: 0,left:0,width: '100%'}}
+    title={'Your conatcts'}
+    leftIconName={'menu'}
+    onLeftPress={() => this.setState({drawer: true})}
+    />
             <TouchableOpacity
             onPress={()=>{
               this.setState({isLoading: true})

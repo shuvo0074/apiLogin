@@ -11,10 +11,15 @@ import {
   NetInfo,
   ActivityIndicator,
 } from 'react-native';
+import ActionBar from 'react-native-action-bar'
 var SQLite = require('react-native-sqlite-storage')
 export default class HomeScreen extends Component<{}> {
     static navigationOptions = {
         title: 'Login',
+        headerStyle: {
+      backgroundColor: '#079992',
+      height:0,
+    }
     }
     constructor (props){
       super(props)
@@ -52,6 +57,10 @@ export default class HomeScreen extends Component<{}> {
     else{
       return (
         <View style={styles.container} >
+        <ActionBar
+    containerStyle={{position: 'absolute',top: 0,left:0,width: '100%'}}
+    title={'Home'}
+/>
         <TextInput
         placeholder= "    User Name"
         onChangeText={(txt)=>{

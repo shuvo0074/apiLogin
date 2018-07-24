@@ -18,7 +18,7 @@ const Nav=StackNavigator({
   navigationOptions: {
     headerStyle: {
       backgroundColor: '#079992',
-      height:45,
+      height:0,
     }
   }
 }
