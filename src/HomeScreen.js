@@ -64,13 +64,14 @@ export default class HomeScreen extends Component<{}> {
         onChangeText={(txt)=>{
           this.setState({pass: txt})
         }}
+        secureTextEntry
         style={styles.input}
         />
         <TouchableOpacity
         onPress= {()=>{
-          this.setState({isLoading: true,
-          })
-          let url='http://202.40.191.226:8084/DHSWEB/LoginS?userid='+this.state.uname+'&password='+this.state.pass+''
+          this.setState({isLoading: true})
+          setTimeout(()=>{
+            let url='http://202.40.191.226:8084/DHSWEB/LoginS?userid='+this.state.uname+'&password='+this.state.pass+''
           return fetch(url)
          .then((response) => response.json())
          .then((responseJson) => {
@@ -91,6 +92,8 @@ export default class HomeScreen extends Component<{}> {
          .catch((error) => {
            console.error("Error in datasource ",error);
          })
+          },3000)
+          
         }}
         style={styles.button}
         >

@@ -23,10 +23,11 @@ export default class ProfileScreen extends Component<{}> {
         dataSource: null,
         dbDataSource: null,
       })
-      this.setState({isLoading: true})
       this._sync()
     }
     _sync=()=>{
+      this.setState({isLoading: true})
+      setTimeout(()=>{
       console.log("Syncing contacts")
       return fetch('https://api.androidhive.info/contacts/')
         .then((response) => response.json())
@@ -54,6 +55,7 @@ export default class ProfileScreen extends Component<{}> {
           console.log("Error in datasource ");
         });
         
+      },2000)
     }
     _syncDb=()=>{
       console.log("Syncing contacts from database")
