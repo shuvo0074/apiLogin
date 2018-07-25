@@ -10,6 +10,7 @@ import {
   TextInput,
   NetInfo,
   ActivityIndicator,
+  Keyboard
 } from 'react-native';
 import ActionBar from 'react-native-action-bar'
 var SQLite = require('react-native-sqlite-storage')
@@ -50,22 +51,20 @@ export default class HomeScreen extends Component<{}> {
 
     render() {
     const {navigate}=this.props.navigation
-    if (this.state.isLoading) {
-      return (
-        <View style={{flex: 1, paddingTop: 20}}>
-          <ActivityIndicator />
-        </View>
-      );
-    }
-    else{
       return (
         <View style={styles.container} >
         <ActionBar
     containerStyle={{position: 'absolute',top: 0,left:0,width: '100%'}}
     title={'Home'}
-/>
+        />
+      {this.state.isLoading?
+        <ActivityIndicator />
+        :
+        <View/>
+      }
         <TextInput
         placeholder= "    User Name"
+        ref="ti1"
         onChangeText={(txt)=>{
           this.setState({uname: txt.toLowerCase()})
         }}
@@ -73,8 +72,9 @@ export default class HomeScreen extends Component<{}> {
         />
         <TextInput
         placeholder= "    Password"
+        ref="ti2"
         onChangeText={(txt)=>{
-          this.setState({pass: txt.toLowerCase()})
+          this.setState({pass: txt})
         }}
         secureTextEntry
         style={styles.input}
@@ -88,7 +88,7 @@ export default class HomeScreen extends Component<{}> {
             else
           {this.setState({isLoading: true})
           setTimeout(()=>{
-            let url='http://202.40.191.226:8084/DHSWEB/LoginS?userid='+this.state.uname+'&password='+this.state.pass+''
+            let url='http://202.40.191.226:8084/DHSWEB/LoginS?userid='+this.state.uname.toLowerCase()+'&password='+this.state.pass+''
             return fetch(url)
            .then((response) => response.json())
            .then((responseJson) => {
@@ -103,9 +103,12 @@ export default class HomeScreen extends Component<{}> {
               console.log("url : -", url +"-")
               console.log(" Data Source ",this.state.dataSource[0])
               console.log("outCode type"+typeof(this.state.dataSource[0].outCode))
+              Keyboard.dismiss()
               navigate('Profile')
-              this.setState({uname: '',
-              pass: '',})}
+                this.refs.ti1.clear()
+                this.refs.ti2.clear()
+                this.setState({uname: '', pass: ''})
+            }
              })
            })
            .catch((error) => {
@@ -127,7 +130,6 @@ export default class HomeScreen extends Component<{}> {
         </TouchableOpacity>
         </View>
           )
-    }
     }
   }
   

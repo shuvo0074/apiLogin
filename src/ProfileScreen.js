@@ -36,7 +36,7 @@ export default class ProfileScreen extends Component<{}> {
         H: Dimensions.get('window').height,
       })
       })  
-      this._sync()
+      this._syncDb()
     }
     _sync=()=>{
       this.setState({isLoading: true})
@@ -116,15 +116,21 @@ export default class ProfileScreen extends Component<{}> {
   
   
     render() {
-      var drawerContent = (<View style={styles.container}>
+      var drawerContent = (<View style={styles.drawerContainer}>
             <TouchableOpacity
             onPress={()=>{
               this.setState({isLoading: true})
+              this.refs.myDrawer.closeDrawer()
               this._sync()
             }}
             style={styles.button}
             >
-              <Text>
+              <Text
+              style={{
+                fontSize: 20,
+                fontFamily: "bold"
+              }}
+              >
                 Sync
               </Text>
             </TouchableOpacity>
@@ -142,7 +148,12 @@ export default class ProfileScreen extends Component<{}> {
             }}
             style={styles.button}
             >
-            <Text>
+            <Text
+            style={{
+              fontSize: 20,
+              fontFamily: "bold"
+            }}
+            >
             Logout
             </Text>
             </TouchableOpacity>
@@ -153,13 +164,6 @@ export default class ProfileScreen extends Component<{}> {
           shadowOpacity: 0.4,
           shadowRadius: 10
         },
-      }
-      if (this.state.isLoading) {
-        return (
-          <View style={{flex: 1, paddingTop: 20}}>
-            <ActivityIndicator />
-          </View>
-        );
       }
       const {navigate}=this.props.navigation
       return (
@@ -208,6 +212,9 @@ export default class ProfileScreen extends Component<{}> {
               justifyContent: 'center'
             }}
             >
+            {this.state.isLoading?
+            <ActivityIndicator />
+            :
             <FlatList
        
             data={ this.state.dbDataSource }
@@ -241,8 +248,9 @@ export default class ProfileScreen extends Component<{}> {
           }
 
             keyExtractor={(item, index) => index.toString()}
+            />
+            }
             
-      />
             </View>
             </View>
             
@@ -259,22 +267,19 @@ export default class ProfileScreen extends Component<{}> {
       alignItems: 'center',
       backgroundColor: '#1e3799',
     },
-    button: {
-      borderRadius: 7,
-      borderWidth:1,
+    drawerContainer:{
+      flex: 1,
+      justifyContent: 'center',
+      backgroundColor: '#b8e994',
       borderColor: '#4a69bd',
-      backgroundColor: '#079992',
+    },
+    button: {
       height: 40,
       width: 120,
       alignItems: 'center',
       justifyContent: 'center',
-      margin: 20,
+      marginVertical : 15,
   },
-    welcome: {
-      fontSize: 20,
-      textAlign: 'center',
-      margin: 10,
-    },
     instructions: {
       textAlign: 'center',
       color: '#333333',
@@ -290,15 +295,6 @@ export default class ProfileScreen extends Component<{}> {
       alignItems: 'center',
       justifyContent: 'center'
     },
-    MainContainer :{
-
-      justifyContent: 'center',
-      flex:1,
-      margin: 10,
-      paddingTop: (Platform.OS === 'ios') ? 20 : 0,
-      
-      },
-      
       FlatListItemStyle: {
           padding: 10,
           fontSize: 18,
