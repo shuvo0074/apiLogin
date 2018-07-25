@@ -24,8 +24,8 @@ export default class ProfileScreen extends Component<{}> {
       super(props)
       this.state = ({
         isLoading: false,
-        dataSource: null,
-        dbDataSource: null,
+        dataSource: [],
+        dbDataSource: [],
         drawer: false,
         W: Dimensions.get('window').width,
         H: Dimensions.get('window').height,
@@ -78,17 +78,27 @@ export default class ProfileScreen extends Component<{}> {
             console.log("array len "+ len)
             if (len>0){
               for (x=0;x<len;x++){
-                var rec
+                var rec={id:'',
+                name:'',
+                email:'',
+                address:'',
+                gender:'',
+                phone:{
+                  mobile:'',
+                  home: '',
+                  office:''}
+                }
                 rec.id= results.rows.item(x).id
                 rec.name= results.rows.item(x).name
                 rec.email= results.rows.item(x).email
                 rec.address= results.rows.item(x).address
                 rec.gender= results.rows.item(x).gender
-                rec.phone.mobile= results.rows.item(x).phone.mobile
-                rec.phone.home= results.rows.item(x).phone.home
-                rec.phone.office= results.rows.item(x).phone.office
+                rec.phone.mobile= results.rows.item(x).mobile
+                rec.phone.home= results.rows.item(x).home
+                rec.phone.office= results.rows.item(x).office
                 var arr=this.state.dbDataSource
                 arr.push(rec)
+                console.log("data array --",arr)
                 this.setState({dbDataSource: arr})
               }
             }
@@ -106,12 +116,6 @@ export default class ProfileScreen extends Component<{}> {
           }}
         />
       );
-    }
-  
-    GetFlatListItem= (fruit_name)=> {
-     
-    Alert.alert(fruit_name);
-  
     }
   
   
@@ -181,7 +185,7 @@ export default class ProfileScreen extends Component<{}> {
         <View style={styles.container} >
         <ActionBar
     containerStyle={{position: 'absolute',top: 0,left:0,width: this.state.W}}
-    title={'Your conatcts'}
+    title={'Your conacts'}
     leftIconName={'menu'}
     onLeftPress={() => {
     this.refs.myDrawer.openDrawer()}
@@ -223,9 +227,7 @@ export default class ProfileScreen extends Component<{}> {
 
             renderItem={({item}) => 
             <View>
-              <Text style={styles.FlatListItemStyle} onPress={()=>{
-              this.GetFlatListItem
-            }} > {item.name} </Text>
+              <Text style={styles.FlatListItemStyle} > {item.name} </Text>
             <Text>
               {item.email}
             </Text>
@@ -266,10 +268,10 @@ export default class ProfileScreen extends Component<{}> {
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: '#1e3799',
+      padding: 15,
     },
     drawerContainer:{
       flex: 1,
-      justifyContent: 'center',
       backgroundColor: '#b8e994',
       borderColor: '#4a69bd',
     },

@@ -83,7 +83,7 @@ export default class HomeScreen extends Component<{}> {
         onPress= {()=>{
           if (this.state.connection)
           {
-            if(this.state.uname===''&&this.state.pass==='')
+            if(this.state.uname===''||this.state.pass==='')
             {ToastAndroid.show("Insert username and password", ToastAndroid.SHORT)}
             else
           {this.setState({isLoading: true})
