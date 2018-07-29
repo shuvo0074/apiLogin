@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "/Users/tarmim/RN/apiLogin/android/app/build/intermediates/res/merged/debug/drawable-mdpi/node_modules_reactnativeactionbar_actionbarimages_star.png",
+        "source": "/Users/tarmim/RN/apiLogin/android/app/src/main/res/drawable-mdpi/node_modules_reactnativeactionbar_actionbarimages_star.png"
+    },
+    {
+        "merged": "/Users/tarmim/RN/apiLogin/android/app/build/intermediates/res/merged/debug/drawable-mdpi/node_modules_reactnativeactionbar_actionbarimages_plus.png",
+        "source": "/Users/tarmim/RN/apiLogin/android/app/src/main/res/drawable-mdpi/node_modules_reactnativeactionbar_actionbarimages_plus.png"
+    },
+    {
+        "merged": "/Users/tarmim/RN/apiLogin/android/app/build/intermediates/res/merged/debug/drawable-mdpi/node_modules_reactnativeactionbar_actionbarimages_phone.png",
+        "source": "/Users/tarmim/RN/apiLogin/android/app/src/main/res/drawable-mdpi/node_modules_reactnativeactionbar_actionbarimages_phone.png"
+    },
+    {
+        "merged": "/Users/tarmim/RN/apiLogin/android/app/build/intermediates/res/merged/debug/drawable-mdpi/node_modules_reactnavigation_src_views_assets_backiconmask.png",
+        "source": "/Users/tarmim/RN/apiLogin/android/app/src/main/res/drawable-mdpi/node_modules_reactnavigation_src_views_assets_backiconmask.png"
+    },
+    {
+        "merged": "/Users/tarmim/RN/apiLogin/android/app/build/intermediates/res/merged/debug/drawable-mdpi/node_modules_reactnativeactionbar_actionbarimages_back.png",
+        "source": "/Users/tarmim/RN/apiLogin/android/app/src/main/res/drawable-mdpi/node_modules_reactnativeactionbar_actionbarimages_back.png"
+    },
+    {
+        "merged": "/Users/tarmim/RN/apiLogin/android/app/build/intermediates/res/merged/debug/drawable-mdpi/node_modules_reactnativeactionbar_actionbarimages_location.png",
+        "source": "/Users/tarmim/RN/apiLogin/android/app/src/main/res/drawable-mdpi/node_modules_reactnativeactionbar_actionbarimages_location.png"
+    },
+    {
+        "merged": "/Users/tarmim/RN/apiLogin/android/app/build/intermediates/res/merged/debug/drawable-mdpi/node_modules_reactnavigation_src_views_assets_backicon.png",
+        "source": "/Users/tarmim/RN/apiLogin/android/app/src/main/res/drawable-mdpi/node_modules_reactnavigation_src_views_assets_backicon.png"
+    },
+    {
+        "merged": "/Users/tarmim/RN/apiLogin/android/app/build/intermediates/res/merged/debug/drawable-mdpi/node_modules_reactnativeactionbar_actionbarimages_flag.png",
+        "source": "/Users/tarmim/RN/apiLogin/android/app/src/main/res/drawable-mdpi/node_modules_reactnativeactionbar_actionbarimages_flag.png"
+    },
+    {
+        "merged": "/Users/tarmim/RN/apiLogin/android/app/build/intermediates/res/merged/debug/drawable-mdpi/node_modules_reactnativeactionbar_actionbarimages_star_outline.png",
+        "source": "/Users/tarmim/RN/apiLogin/android/app/src/main/res/drawable-mdpi/node_modules_reactnativeactionbar_actionbarimages_star_outline.png"
+    },
+    {
+        "merged": "/Users/tarmim/RN/apiLogin/android/app/build/intermediates/res/merged/debug/drawable-mdpi/node_modules_reactnativeactionbar_actionbarimages_menu.png",
+        "source": "/Users/tarmim/RN/apiLogin/android/app/src/main/res/drawable-mdpi/node_modules_reactnativeactionbar_actionbarimages_menu.png"
+    }
+]

@@ -128,6 +128,16 @@ export default class HomeScreen extends Component<{}> {
         Log in
         </Text>
         </TouchableOpacity>
+        <TouchableOpacity
+        onPress={()=>{
+          navigate('Signup')
+        }}
+        style={styles.button}
+        >
+        <Text>
+          Sign up
+        </Text>
+        </TouchableOpacity>
         </View>
           )
     }
