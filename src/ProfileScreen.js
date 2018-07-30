@@ -93,9 +93,15 @@ export default class ProfileScreen extends Component<{}> {
                 rec.email= results.rows.item(x).email
                 rec.address= results.rows.item(x).address
                 rec.gender= results.rows.item(x).gender
-                rec.phone.mobile= results.rows.item(x).mobile
-                rec.phone.home= results.rows.item(x).home
-                rec.phone.office= results.rows.item(x).office
+                console.log(results.rows.item(x).phoneMobile)
+                rec.phone.mobile= results.rows.item(x).phoneMobile
+                console.log(rec.phone.mobile)
+                console.log(results.rows.item(x).phoneHome)
+                rec.phone.home= results.rows.item(x).phoneHome
+                console.log(rec.phone.home)
+                console.log(results.rows.item(x).phoneOffice)
+                rec.phone.office= results.rows.item(x).phoneOffice
+                console.log(rec.phone.office)
                 var arr=this.state.dbDataSource
                 arr.push(rec)
                 console.log("data array --",arr)
